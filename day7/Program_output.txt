@@ -1,0 +1,119 @@
+ 
+ _                                             
+| |                                            
+| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
+| '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                    __/ |                      
+                   |___/    
+ welcome to hangman game!
+the word you are trying to guess is: ______
+***********you have 6/6 lives *************
+guess a letter: a
+______
+the letter a is not in the word :(, you lose a life:
+
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+
+***********you have 5/6 lives *************
+guess a letter: m
+______
+the letter m is not in the word :(, you lose a life:
+
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+
+***********you have 4/6 lives *************
+guess a letter: r
+______
+the letter r is not in the word :(, you lose a life:
+
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========
+***********you have 3/6 lives *************
+guess a letter: w
+______
+the letter w is not in the word :(, you lose a life:
+
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+
+***********you have 2/6 lives *************
+guess a letter: e
+____e_
+
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+
+***********you have 2/6 lives *************
+guess a letter: i
+____e_
+the letter i is not in the word :(, you lose a life:
+
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+
+***********you have 1/6 lives *************
+guess a letter: k
+___ke_
+
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+
+***********you have 1/6 lives *************
+guess a letter: r
+___ke_
+you have already guessed this letter before!
+***********you have 1/6 lives *************
+guess a letter: d
+___ke_
+the letter d is not in the word :(, you lose a life:
+you lost...
+
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+
+
+Process finished with exit code 0
