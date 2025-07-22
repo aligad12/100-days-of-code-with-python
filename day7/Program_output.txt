@@ -8,11 +8,23 @@
                     __/ |                      
                    |___/    
  welcome to hangman game!
-the word you are trying to guess is: ______
+the word you are trying to guess is: ________
 ***********you have 6/6 lives *************
 guess a letter: a
-______
-the letter a is not in the word :(, you lose a life:
+__a_____
+
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+
+***********you have 6/6 lives *************
+guess a letter: v
+__a_____
+the letter v is not in the word :(, you lose a life:
 
   +---+
   |   |
@@ -23,9 +35,21 @@ the letter a is not in the word :(, you lose a life:
 =========
 
 ***********you have 5/6 lives *************
-guess a letter: m
-______
-the letter m is not in the word :(, you lose a life:
+guess a letter: e
+__a___e_
+
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+
+***********you have 5/6 lives *************
+guess a letter: n
+__a___e_
+the letter n is not in the word :(, you lose a life:
 
   +---+
   |   |
@@ -36,9 +60,9 @@ the letter m is not in the word :(, you lose a life:
 =========
 
 ***********you have 4/6 lives *************
-guess a letter: r
-______
-the letter r is not in the word :(, you lose a life:
+guess a letter: m
+__a___e_
+the letter m is not in the word :(, you lose a life:
 
   +---+
   |   |
@@ -48,9 +72,9 @@ the letter r is not in the word :(, you lose a life:
       |
 =========
 ***********you have 3/6 lives *************
-guess a letter: w
-______
-the letter w is not in the word :(, you lose a life:
+guess a letter: s
+__a___e_
+the letter s is not in the word :(, you lose a life:
 
   +---+
   |   |
@@ -61,8 +85,8 @@ the letter w is not in the word :(, you lose a life:
 =========
 
 ***********you have 2/6 lives *************
-guess a letter: e
-____e_
+guess a letter: d
+__a___ed
 
   +---+
   |   |
@@ -73,39 +97,52 @@ ____e_
 =========
 
 ***********you have 2/6 lives *************
-guess a letter: i
-____e_
-the letter i is not in the word :(, you lose a life:
+guess a letter: f
+f_a___ed
 
   +---+
   |   |
   O   |
  /|\  |
- /    |
+      |
       |
 =========
 
-***********you have 1/6 lives *************
-guess a letter: k
-___ke_
-
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-
-***********you have 1/6 lives *************
+***********you have 2/6 lives *************
 guess a letter: r
-___ke_
+fra___ed
+
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+
+***********you have 2/6 lives *************
+guess a letter: y
+fra___ed
+the letter y is not in the word :(, you lose a life:
+
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+
+***********you have 1/6 lives *************
+guess a letter: n
+fra___ed
 you have already guessed this letter before!
 ***********you have 1/6 lives *************
-guess a letter: d
-___ke_
-the letter d is not in the word :(, you lose a life:
+guess a letter: k
+fra___ed
+the letter k is not in the word :(, you lose a life:
 you lost...
+the word was: frazzled
 
   +---+
   |   |
@@ -114,6 +151,3 @@ you lost...
  / \  |
       |
 =========
-
-
-Process finished with exit code 0
