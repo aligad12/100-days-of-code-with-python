@@ -16,7 +16,7 @@ guessed_letters = []
 
 while not game_over:
     print(f"***********you have {lives}/6 lives *************")
-    guess = input("guess a letter: ")
+    guess = (input("guess a letter: ").lower()).strip()
     display=""
 
     for letter in chosen_word:
