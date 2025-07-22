@@ -9,7 +9,7 @@ gallow = """
       |
 =========
 """
-Head = """
+head = """
   +---+
   |   |
   O   |
@@ -17,7 +17,7 @@ Head = """
       |
       |
 ========="""
-Body = """
+body = """
   +---+
   |   |
   O   |
@@ -58,7 +58,7 @@ both_legs ="""
  / \  |
       |
 ========="""
-body_parts = [gallow,Head,Body,one_arm,both_arms,one_leg,both_legs]
+body_parts = [gallow,head,body,one_arm,both_arms,one_leg,both_legs]
 
 word_list = ["aardvark", "baboon", "camel"]
 chosen_word = random.choice(word_list)
