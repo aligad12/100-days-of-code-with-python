@@ -17,14 +17,13 @@ logo = r'''
                       /_______________\\
 '''
 import os
-
+import time
 
 print(logo)
 print(f"{'*'*50}\nWelcome to Secret Auction App!\n{'*'*50}")
 def secret_auction():
     still_bidding = True
     bidding_list = {}
-    max_value = 0
     while still_bidding:
         name = input("What is your name?: ")
         while True:
@@ -49,6 +48,10 @@ def secret_auction():
             else:
                 print("this was not a valid response!")
                 continue
+    get_highest_bidder(bidding_list=bidding_list)
+
+def get_highest_bidder(bidding_list):
+    max_value = 0
     name_of_highest_bid = ""
     for key in bidding_list:
         if bidding_list[key] > max_value:
@@ -64,7 +67,15 @@ while using_app:
     restart = input("Would you like to run another auction? (yes/no): ").strip().lower()
     if restart == "yes":
         os.system('cls' if os.name == 'nt' else 'clear')
+        print(logo)
+        print(f"{'*'*50}\nWelcome to Secret Auction App!\n{'*'*50}")
         secret_auction()
     else:
-        print("Thank you for using the Secret Auction App!")
+        print("Thank you for using the Secret Auction App! closing app....")
+        for i in range(4):
+            time.sleep(0.3)
+            print(".",end = " ")
+        print("\ngoodbye...")
+        time.sleep(0.3)
+        os.system('cls' if os.name == 'nt' else 'clear')
         using_app = False
