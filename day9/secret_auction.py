@@ -59,4 +59,12 @@ def secret_auction():
 
 
 secret_auction()
-
+using_app = True
+while using_app:
+    restart = input("Would you like to run another auction? (yes/no): ").strip().lower()
+    if restart == "yes":
+        os.system('cls' if os.name == 'nt' else 'clear')
+        secret_auction()
+    else:
+        print("Thank you for using the Secret Auction App!")
+        using_app = False
