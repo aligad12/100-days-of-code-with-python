@@ -57,7 +57,7 @@ def get_highest_bidder(bidding_list):
         if bidding_list[key] > max_value:
             max_value = bidding_list[key]
             name_of_highest_bid = key
-    print(f"The winner is {name_of_highest_bid} with a bid of ${max_value}")
+    print(f"The winner is {name_of_highest_bid} with a bid of ${max_value:.2f}")
 
 
 
@@ -71,7 +71,7 @@ while using_app:
         print(f"{'*'*50}\nWelcome to Secret Auction App!\n{'*'*50}")
         secret_auction()
     else:
-        print("Thank you for using the Secret Auction App! closing app....")
+        print("Thank you for using the Secret Auction App! closing app",end="")
         for i in range(4):
             time.sleep(0.3)
             print(".",end = " ")
