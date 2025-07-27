@@ -78,16 +78,18 @@ def default_cards_game_start(cards,keys,person_cards):
     return random_card
 
 def check_wining_condition():
-    if sum(player_cards) > sum(pc_cards) and sum(player_cards) <=21:
+    if sum(player_cards) > 21:
+        print("Bust!!!")
+    elif sum(player_cards) <= 21 and sum(pc_cards) > 21:
+        print("You win!")
+    elif sum(player_cards) > sum(pc_cards):
         print("You win!")
     elif sum(player_cards) == sum(pc_cards):
         print("Tie")
-    elif sum(player_cards) > 21:
-        print("Bust!!!")
     else:
-        print("You lost!")
+        print("You lost")
 
-        
+
 def dealer_turn():
     pc_total = sum(pc_cards)
     while pc_total < 17:
@@ -111,8 +113,12 @@ while sum(player_cards) < 21:
             player_cards.append(append_user_cards(cards))
             if sum(player_cards) < 21 and sum(pc_cards) != 21:
                 continue
-        else:
+            else:
+                break
+        elif deal_or_not == 'n':
             break
+    if deal_or_not == 'n':
+        break
 if sum(player_cards) <= 21:
     dealer_turn()
 
