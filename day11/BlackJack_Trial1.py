@@ -1,6 +1,15 @@
 from Tools.scripts.dutree import display
-from art import logo
 import random
+logo = r"""
+.------.            _     _            _    _            _    
+|A_  _ |.          | |   | |          | |  (_)          | |   
+|( \/ ).-----.     | |__ | | __ _  ___| | ___  __ _  ___| | __
+| \  /|K /\  |     | '_ \| |/ _` |/ __| |/ / |/ _` |/ __| |/ /
+|  \/ | /  \ |     | |_) | | (_| | (__|   <| | (_| | (__|   < 
+`-----| \  / |     |_.__/|_|\__,_|\___|_|\_\ |\__,_|\___|_|\_\\
+      |  \/ K|                            _/ |                
+      `------'                           |__/           
+"""
 
 print(logo)
 print(f"{'*'*50}\nWelcome to BlackJack game!\n{'*'*50}")
@@ -68,24 +77,23 @@ def default_cards_game_start(cards,keys,person_cards):
         random_card = cards[random_key]
     return random_card
 
-def check_win_condition():
-    if sum(player_cards) > 21:
-        print("Bust!!!")
-    elif sum(player_cards) == 21 and sum(pc_cards) != 21:
-        print("You Won!")
-        return True
+def check_wining_condition():
+    if sum(player_cards) > sum(pc_cards) and sum(player_cards) <=21:
+        print("You win!")
     elif sum(player_cards) == sum(pc_cards):
         print("Tie")
-        return False
     elif sum(player_cards) > 21:
         print("Bust!!!")
-    elif sum(player_cards) > sum(pc_cards):
-        print("You Win!")
-        return True
     else:
-        print("You Lost")
-        return False
+        print("You lost!")
 
+        
+def dealer_turn():
+    pc_total = sum(pc_cards)
+    while pc_total < 17:
+        print("pc is dealing a card...")
+        pc_cards.append(default_cards_game_start(cards,keys,pc_cards))
+        pc_total = sum(pc_cards)
 
 keys = ["Ace", "normal" , "K","Q","J"]
 player_cards = []
@@ -98,31 +106,18 @@ display_cards(pc_cards=pc_cards,user_cards=player_cards)
 
 while sum(player_cards) < 21:
     while True:
-        deal_or_not = input("Deal?(y/n):").lower().strip()
+        deal_or_not = input("Do you want to deal? (y/n): ").lower().strip()
         if deal_or_not == 'y':
             player_cards.append(append_user_cards(cards))
-            if random_key == "Ace":
-                temp = input("You got an Ace, do you want to deal again? (y/n) Note:other inputs than these will be considered as a no! ").lower().strip()
-                if temp == 'y':
-                    continue
-                elif temp == 'n':
-                    break
-                else:
-                    break
-            elif sum(player_cards) >= 21:
-                break
-            else:
+            if sum(player_cards) < 21 and sum(pc_cards) != 21:
                 continue
-        elif deal_or_not == 'n':
-            break
         else:
-            print("this choice is invalid and not in the options!")
-        display_cards(pc_cards=pc_cards,user_cards=player_cards)
-    if sum(pc_cards) < 17:
-        print("Pc is dealing a card!")
-        pc_cards.append(default_cards_game_start(cards=cards,keys=keys,person_cards=pc_cards))
-    display_cards_end_game(pc_cards=pc_cards,user_cards=player_cards)
-    if check_win_condition():
-        break
-if sum(player_cards) == 21:
-    print("You Won!")
+            break
+if sum(player_cards) <= 21:
+    dealer_turn()
+
+print("\n" + '*'*50)
+display_cards_end_game(pc_cards,player_cards)
+#check the winner then
+print("\n" + '*'*50)
+check_wining_condition()
