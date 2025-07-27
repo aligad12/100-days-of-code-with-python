@@ -2,6 +2,10 @@ import random
 import time
 from art import logo
 import os
+EASY_LEVEL_TURNS = 10
+HARD_LEVEL_TURNS = 5
+
+
 
 def compare_number(user_guess,selected_number,turns):
     if user_guess < selected_number:
@@ -17,11 +21,9 @@ def set_difficulty():
     while True:
         game_level = input("Choose a difficulty. Type 'easy' or 'hard': ").lower().strip()
         if game_level == 'easy':
-            no_of_turns = 10
-            return no_of_turns
+            return EASY_LEVEL_TURNS
         elif game_level == 'hard':
-            no_of_turns = 5
-            return no_of_turns
+            return HARD_LEVEL_TURNS
         else:
             print("That was an invalid input!")
 
