@@ -48,3 +48,32 @@ cd blackjack-capstone
 
 # 3. Run the game
 python main.py
+
+---
+
+## 🗃️ Project Structure
+
+```bash
+blackjack-capstone/
+├── main.py         # Game logic
+├── art.py          # ASCII banner/logo
+├── README.md       # You're here!
+
+---
+## 🧠 Card Deck Logic
+The game simulates a minimal deck using this structure:
+```bash
+cards = {
+  "Ace": [1, 11],
+  "normal": [2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "K": 10,
+  "Q": 10,
+  "J": 10
+}
+---
+-Ace values are chosen interactively by the player when needed.
+---
+
+## 👨‍💻 Author
+-Made with 💻 and 🧠 by Ali Gad
+-A capstone project from my Python learning journey, focusing on functions, logic, user input, and clean CLI design.
