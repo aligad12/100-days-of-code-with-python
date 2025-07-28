@@ -54,7 +54,7 @@ resources ={
 
 
 def print_report():
-    print(f"water: {str(resources['water'])}\n:milk: {str(resources['milk'])}\ncoffee: {str(resources['coffee'])}\nMoney: {YOUR_MONEY}")
+    print(f"water: {str(resources['water'])}ml\n:milk: {str(resources['milk'])}ml\ncoffee: {str(resources['coffee'])}g\nMoney: ${YOUR_MONEY}")
 
 def check_sufficient_resources(user_input):
     if user_input in MENU:
@@ -106,6 +106,7 @@ def user_input_conversion(typed_message):
         return "That was an invalid input!"
     
 def pay_money():
+    print(f"The coins currency:\nquarters = $0.25\ndimes = $0.10\nnickles = $0.05\npennies = $0.01")
     no_quarters = float(input("insert coins to pay for your drink.\nHow many quarters do you want to insert: "))
     inserted_money["quarters"] += no_quarters
     no_pennies = float(input("How many pennies do you want to insert: "))
@@ -123,10 +124,32 @@ def process_money():
     total_money+=inserted_money["pennies"] *0.01
     return total_money
         
+def make_coffee(drink):
+    if drink == "espresso":
+        resources["water"] -= 50
+        resources["coffee"] -= 18
+    elif drink == "latte":
+        resources["water"] -= 200
+        resources["milk"] -= 150
+        resources["coffee"] -= 24
+    elif drink == "capuccino":
+        resources["water"] -= 250
+        resources["milk"] -=100
+        resources["coffee"] -= 24
+
+def display_menu():
+    print(f"Menu:\nespresso: $1.5\nlatte: $2.5\ncapuccino: $3.0")
+
+def display_balance():
+    global YOUR_MONEY
+    print(f"Your balance now is: {YOUR_MONEY}")
+
 #we are going to make a coffee machine
 def coffee_machine():
+    global YOUR_MONEY
     print(logo)
     print(f"{'*'*50}\nWelcome to Coffee Machine!\n{'*'*50}")
+    display_menu()
     machine_is_on = True
     while machine_is_on:
         prompt = input("What would you like?\n1.espresso\n2.latte\n3.capuccino\n4.report\nchoose an option: ").lower().strip()
@@ -135,19 +158,28 @@ def coffee_machine():
         if chosen_option in drinks:
             if check_sufficient_resources(chosen_option):
                 drink_price = MENU[chosen_option]["cost"]
-                if YOUR_MONEY >= drink_price:
+                if YOUR_MONEY == 0:
+                    print("You currently have no money in your balance.\nYou can insert coins to fill your balance!")
+                    pay_money()
+                    added_money = process_money()
+                    YOUR_MONEY+=added_money
+                    display_balance()
+                elif YOUR_MONEY >= drink_price:
                     pay_money()
                     payed_money = process_money()
                     YOUR_MONEY-=payed_money
                     if payed_money > drink_price:
                         change = payed_money - drink_price
-                        print(f"Your change is: {change}")
+                        print(f"Your change is: {change:.2f}")
                         YOUR_MONEY += change
+                        display_balance()
+                    make_coffee(chosen_option)
+                    print(f"Here is your {chosen_option}! Have a niceday :)")
                 else:
                     print("Sorry the amount of money you have is not sufficient for this drink.")
             else:
-                print(f"the resources in the coffee machine: water: {str(resources['water'])}\n"
-                f"milk: {str(resources['milk'])}\ncoffee: {str(resources['coffee'])}")
+                print(f"the resources in the coffee machine: water: {str(resources['water'])}ml\n"
+                f"milk: {str(resources['milk'])}ml\ncoffee: {str(resources['coffee'])}g")
                 print("the resources in the machine is not sufficient, reffiling the system",end="")
                 for _ in range(4):
                     time.sleep(1)
