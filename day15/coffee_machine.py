@@ -38,7 +38,7 @@ MENU = {
     }
 }
 YOUR_MONEY = 0
-inserted_money = {
+cash_in = {
     'quarters': 0,
     'dimes': 0,
     'nickles': 0,
@@ -109,23 +109,25 @@ def user_input_conversion(typed_message):
 
 
 def pay_money():
+    inserted_money = {}
     print(f"The coins currency:\nquarters = $0.25\ndimes = $0.10\nnickles = $0.05\npennies = $0.01")
     no_quarters = float(input("insert coins to pay for your drink.\nHow many quarters do you want to insert: "))
-    inserted_money["quarters"] += no_quarters
+    inserted_money["quarters"] = no_quarters
     no_pennies = float(input("How many pennies do you want to insert: "))
-    inserted_money["pennies"] += no_pennies
+    inserted_money["pennies"] = no_pennies
     no_dimes = float(input("How many dimes do you want to insert: "))
-    inserted_money["dimes"] += no_dimes
+    inserted_money["dimes"] = no_dimes
     no_nickles = float(input("How many nickles do you want to insert: "))
-    inserted_money["nickles"] += no_nickles
+    inserted_money["nickles"] = no_nickles
+    return inserted_money
 
 
-def process_money():
+def process_money(cash_in):
     total_money = 0
-    total_money += inserted_money["quarters"] * 0.25
-    total_money += inserted_money["dimes"] * 0.1
-    total_money += inserted_money["nickles"] * 0.05
-    total_money += inserted_money["pennies"] * 0.01
+    total_money += cash_in["quarters"] * 0.25
+    total_money += cash_in["dimes"] * 0.1
+    total_money += cash_in["nickles"] * 0.05
+    total_money += cash_in["pennies"] * 0.01
     return total_money
 
 
@@ -149,7 +151,7 @@ def display_menu():
 
 def display_balance():
     global YOUR_MONEY
-    print(f"Your balance now is: ${YOUR_MONEY}")
+    print(f"Your balance now is: ${YOUR_MONEY:.2f}")
 
 
 # we are going to make a coffee machine
@@ -167,35 +169,37 @@ def coffee_machine():
         drinks = ['espresso', 'latte', 'cappuccino']
         if chosen_option in drinks:
             if check_sufficient_resources(chosen_option):
-                drink_price = MENU[chosen_option]["cost"]
-                print(f"The {chosen_option} costs: ${drink_price}")
-                if YOUR_MONEY == 0:
-                    print("You currently have no money in your balance.\n\n")
-                    pay_money()
-                    added_money = process_money()
-                    YOUR_MONEY += added_money
-                    display_balance()
+                drink_price = MENU[chosen_option]['cost']
+                if YOUR_MONEY < drink_price:
+                    print("You currently does not have enough balance in your wallet.\n")
+                    user_query = input("Do you want to add money to your balance?(y/n)").lower().strip()
+                    if user_query == 'y':
+                        payed_amount = pay_money()
+                        YOUR_MONEY+=process_money(payed_amount)
+                    else:
+                        print("Then sorry we cannot afford you this drink.")
                 elif YOUR_MONEY >= drink_price:
-                    payed_money = process_money()
-
+                    payed_money = drink_price
+                    YOUR_MONEY -= drink_price
                     if payed_money >= drink_price:
                         change = payed_money - drink_price
                         if change > 0:
                             print(f"Your change is: ${change:.2f}")
-
-                        YOUR_MONEY += drink_price
+                            YOUR_MONEY+=change
                         display_balance()
                         make_coffee(chosen_option)
                         print(f"Here is your {chosen_option}! Have a nice day :)")
 
                     else:
                         print("Sorry, that's not enough money. Money refunded.")
-                    message = input("Do you want to add money now? (y/n):").lower().strip()
-                    if message == 'y':
-                        pay_money()
-                        payed_amount = process_money()
-                        YOUR_MONEY+=payed_amount
-                        display_balance()
+                        message = input("Do you want to add money now? (y/n):").lower().strip()
+                        if message == 'y':
+                            payed_money = pay_money()
+                            payed_amount = process_money(payed_money)
+                            YOUR_MONEY+=payed_amount
+                            display_balance()
+                        else:
+                            print("Then sorry we cant afford you this drink :(\n\n\n")
             else:
                 print(f"the resources in the coffee machine:\nwater: {str(resources['water'])}ml\nmilk: {str(resources['milk'])}ml\ncoffee: {str(resources['coffee'])}g")
                 print("the resources in the machine is not sufficient")
@@ -206,13 +210,16 @@ def coffee_machine():
                     inside_system_menu = False
                 counter = 3
                 system_verification = ""
+                temp_variable = 0
                 while inside_system_menu:
                     if system_verification == "":
                         system_verification = input("If you are the maintenance, enter the password: ")
                     elif system_verification == "4529":
                         os.system('cls' if os.name == 'nt' else 'clear')
                         print(logo)
-                        print("Access granted")
+                        if temp_variable == 0:
+                            print("Access granted")
+                        temp_variable = 1
                         check =  input("System Menu:\n1.Refill System.\n2.Turn Machine OFF.\n3.Exit System Menu\nchoose 1 or 2 or 3: ").lower().strip()
                         if check == '1':
                             print("Adding resources, This might take a while.",end = "")
@@ -220,11 +227,13 @@ def coffee_machine():
                                 time.sleep(1)
                                 print('.',end="")
                             add_resources()
-                            temp = input("resources was added successfully.\n1.Exit Back to System Menu.\n2.Print a report for the Machine resources.\n:").lower().strip()
-                            if temp == '1' :
-                                continue
-                            elif temp == '2' :
-                                print(f"the resources in the coffee machine:\nwater: {str(resources['water'])}ml\nmilk: {str(resources['milk'])}ml\ncoffee: {str(resources['coffee'])}g")
+                            while True:
+                                temp = input("resources was added successfully.\n1.Exit Back to System Menu.\n2.Print a report for the Machine resources.\n:").lower().strip()
+                                if temp == '1' :
+                                    break
+                                elif temp == '2' :
+                                    print(f"the resources in the coffee machine:\nwater: {str(resources['water'])}ml\nmilk: {str(resources['milk'])}ml\ncoffee: {str(resources['coffee'])}g")
+                                    continue
                         elif check == '2':
                             print("Turning the machine off", end='')
                             machine_is_on = False
