@@ -1,92 +1,90 @@
-☕ Coffee Machine – Python Terminal App
+<h1 align="center">☕ Coffee Machine – Python Terminal App</h1>
 
-A terminal-based coffee vending simulation built in Python.
-Select your drink, insert coins, and enjoy a virtual espresso, latte, or cappuccino!
+<p align="center">
+  A terminal-based drink ordering simulation in Python.<br>
+  Insert coins, manage balance, and enjoy espresso, latte, or cappuccino!
+</p>
 
-🚀 Features
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10+-blue?style=flat-square&logo=python">
+  <img src="https://img.shields.io/badge/Project-Type%3A-Terminal_App-lightgrey?style=flat-square">
+  <img src="https://img.shields.io/badge/Status-Completed-brightgreen?style=flat-square">
+</p>
 
-✔ Interactive text-based menu
-✔ Coin payment simulation with real-time balance
-✔ Smart resource management (water, milk, coffee)
-✔ Admin system with password-protected access
-✔ Auto-change calculation and balance updates
-✔ Cross-platform screen clearing for a clean UI
+---
 
-1. espresso   - $1.5
-2. latte      - $2.5
-3. cappuccino - $3.0
-4. report     - machine status
-5. off        - shut down the machine
+<h2>🎮 Game Preview</h2>
 
-🎮 Sample Run
+> Launch the script in your terminal and enjoy an interactive vending simulation.  
+> Includes resource management, balance handling, admin menu, and live feedback.
 
-$ python coffee_machine.py
+---
 
-**************************************************
-Welcome to Coffee Machine!
-**************************************************
+<h2>📋 Features</h2>
 
-Menu:
-espresso: $1.5
-latte: $2.5
-capuccino: $3.0
+- ✅ Interactive drink menu (espresso, latte, cappuccino)
+- ✅ Coin-based payment system (quarters, dimes, nickles, pennies)
+- ✅ Balance tracking + auto-change calculation
+- ✅ Resource management for milk, water, and coffee
+- ✅ Maintenance system with password (refill, report, shutdown)
+- ✅ Cross-platform screen clearing
+- ✅ Modular function-based structure
 
-What would you like?
-1.espresso {$1.5}
-2.latte {$2.5}
-3.capuccino {$3.0}
-4.report
-choose an option: 2
+---
 
-The latte costs: $2.5
-You currently have no money in your balance.
+<h2>🧠 How to Use</h2>
 
-insert coins to pay for your drink.
-How many quarters do you want to insert: 10
-How many pennies do you want to insert: 0
-How many dimes do you want to insert: 0
-How many nickles do you want to insert: 0
+1. Run the Python script
+2. Choose a drink from the menu
+3. Insert coins when prompted
+4. Enjoy your drink or access system menu if low on resources
+5. Play until you're done (or power off the machine)
 
-Your balance now is: $2.5
-Here is your latte! Have a nice day :)
+---
 
-🔐 System Maintenance Access
+<h2>🔐 Maintenance System</h2>
 
-To enter system maintenance mode:
-- Type 'y' when prompted after a resource error
-- Enter password: 4529
+> If ingredients run out, you're prompted to access the system menu:
 
-Available actions:
-1. Refill resources (milk, water, coffee)
-2. Shut down the machine
-3. View machine report
+- Type `y` when prompted  
+- Enter password: `4529`  
+- Actions Available:
+  - Refill water, milk, coffee
+  - View current machine resources
+  - Shut down the machine
 
-🛠️ Requirements
+---
 
-- Python 3.10 or higher
+
+
+<h2>🚀 Getting Started</h2>
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/yourusername/coffee-machine.git
+
+# 2. Navigate into the project folder
+cd coffee-machine
+
+# 3. Run the script
+python coffee_machine.py
+```
+
+<h2> 🛠️ Requirements </h2>
+Python 3.10 or higher
+
 - No external libraries required
 
-📁 Project Structure
-
-coffee_machine/
+<h2>📁 Project Structure</h2>
+```bash
+coffee-machine/
 ├── coffee_machine.py     # Main Python script
-└── README.md             # This documentation
+└── README.md             # Documentation file
+```
 
-🎯 Future Improvements
+<h2>🎯 Future Improvements</h2>
 
-- GUI support using tkinter or PySimpleGUI
-- Save balance and transactions to a file
-- Add more drink types and ingredients
-- Implement unit testing with unittest
-
-👨‍💻 Author
-
-Ali G.
-GitHub: https://github.com/yourusername
-bash
-Copy
-Edit
-📄 License
-
-This project is open-source under the MIT License.
-https://opensource.org/licenses/MIT
+- GUI version with tkinter
+- Save logs and balances to a file
+- Add new drinks (mocha, americano, etc.)
+- Unit testing with unittest or pytest
