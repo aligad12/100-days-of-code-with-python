@@ -96,9 +96,9 @@ number-guessing-game/
 
 ## 👨‍💻 Author
 
-Built with 🧠 and ☕ by **Ali G**
+Built with 🧠 and ☕ by **Ali Gad**
 
-[![GitHub](https://img.shields.io/badge/GitHub-Ali--G-black?style=flat-square\&logo=github)](https://github.com/yourusername)
+[![GitHub](https://img.shields.io/badge/GitHub-Ali--G-black?style=flat-square\&logo=github)](https://github.com/aligad12)
 
 ---
 
