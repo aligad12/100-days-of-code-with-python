@@ -76,6 +76,7 @@ Python 3.10 or higher
 - No external libraries required
 
 <h2>📁 Project Structure</h2>
+
 ```bash
 coffee-machine/
 ├── coffee_machine.py     # Main Python script
