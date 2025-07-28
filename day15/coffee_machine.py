@@ -98,8 +98,8 @@ def user_input_conversion(typed_message):
         return "espresso"
     elif typed_message == '2' or typed_message == 'latte':
         return "latte"
-    elif typed_message == '3' or typed_message == 'capuccino':
-        return "capuccino"
+    elif typed_message == '3' or typed_message == 'cappuccino':
+        return "cappuccino"
     elif typed_message == '4' or typed_message == 'report':
         return "report"
     elif typed_message == 'off' or typed_message == 'close' or typed_message == 'shutdown':
@@ -123,7 +123,7 @@ def pay_money():
 def process_money():
     total_money = 0
     total_money += inserted_money["quarters"] * 0.25
-    total_money += inserted_money["dimes"] * 0.01
+    total_money += inserted_money["dimes"] * 0.1
     total_money += inserted_money["nickles"] * 0.05
     total_money += inserted_money["pennies"] * 0.01
     return total_money
@@ -137,7 +137,7 @@ def make_coffee(drink):
         resources["water"] -= 200
         resources["milk"] -= 150
         resources["coffee"] -= 24
-    elif drink == "capuccino":
+    elif drink == "cappuccino":
         resources["water"] -= 250
         resources["milk"] -= 100
         resources["coffee"] -= 24
@@ -162,9 +162,9 @@ def coffee_machine():
     machine_is_on = True
     while machine_is_on:
         prompt = input(
-            "\n\nWhat would you like?\n1.espresso {$1.5}\n2.latte {$2.5}\n3.capuccino {$3.0}\n4.report\nchoose an option: ").lower().strip()
+            "\n\nWhat would you like?\n1.espresso {$1.5}\n2.latte {$2.5}\n3.cappuccino {$3.0}\n4.report\nchoose an option: ").lower().strip()
         chosen_option = user_input_conversion(prompt)
-        drinks = ['espresso', 'latte', 'capuccino']
+        drinks = ['espresso', 'latte', 'cappuccino']
         if chosen_option in drinks:
             if check_sufficient_resources(chosen_option):
                 drink_price = MENU[chosen_option]["cost"]
@@ -177,16 +177,19 @@ def coffee_machine():
                     display_balance()
                 elif YOUR_MONEY >= drink_price:
                     payed_money = process_money()
-                    YOUR_MONEY -= payed_money
-                    if payed_money > drink_price:
+
+                    if payed_money >= drink_price:
                         change = payed_money - drink_price
-                        print(f"Your change is: {change:.2f}")
-                        YOUR_MONEY += change
+                        if change > 0:
+                            print(f"Your change is: ${change:.2f}")
+
+                        YOUR_MONEY += drink_price
                         display_balance()
-                    make_coffee(chosen_option)
-                    print(f"Here is your {chosen_option}! Have a niceday :)")
-                else:
-                    print("Sorry the amount of money you have is not sufficient for this drink.")
+                        make_coffee(chosen_option)
+                        print(f"Here is your {chosen_option}! Have a nice day :)")
+
+                    else:
+                        print("Sorry, that's not enough money. Money refunded.")
                     message = input("Do you want to add money now? (y/n):").lower().strip()
                     if message == 'y':
                         pay_money()
@@ -196,7 +199,7 @@ def coffee_machine():
             else:
                 print(f"the resources in the coffee machine:\nwater: {str(resources['water'])}ml\nmilk: {str(resources['milk'])}ml\ncoffee: {str(resources['coffee'])}g")
                 print("the resources in the machine is not sufficient")
-                maintenance_guy = input("Do you want to enter The system menu to refill the machine?").lower().strip()
+                maintenance_guy = input("Do you want to enter The system menu to refill the machine?(y/n)").lower().strip()
                 if maintenance_guy == 'y':
                     inside_system_menu = True
                 else:
