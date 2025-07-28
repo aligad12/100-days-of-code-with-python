@@ -1,8 +1,3 @@
-Great start! Here's the **cleaned and fixed version** of your `README.md` — with proper formatting, Markdown syntax, and code blocks for direct GitHub rendering. I corrected indentation, block quotes, code sections, and accidental line breaks so it looks sharp and clean:
-
----
-
-````markdown
 <h1 align="center">🃏 Blackjack – Capstone Project</h1>
 
 <p align="center">
@@ -53,55 +48,3 @@ cd blackjack-capstone
 
 # 3. Run the game
 python main.py
-````
-
-> ✅ Requires **Python 3.x** installed on your system
-
----
-
-## 🗃️ Project Structure
-
-```
-blackjack-capstone/
-├── main.py         # Game logic
-├── art.py          # ASCII banner/logo
-├── README.md       # You're here!
-```
-
----
-
-## 🧠 Card Deck Logic
-
-The game simulates a minimal deck using this structure:
-
-```python
-cards = {
-  "Ace": [1, 11],
-  "normal": [2, 3, 4, 5, 6, 7, 8, 9, 10],
-  "K": 10,
-  "Q": 10,
-  "J": 10
-}
-```
-
-Ace values are chosen interactively by the player when needed.
-
----
-
-## 👨‍💻 Author
-
-Made with 💻 and 🧠 by **Ali Gad**
-A capstone project from my Python learning journey, focusing on functions, logic, user input, and clean CLI design.
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
-
----
-
-<p align="center"><i>“The goal is 21, the challenge is surviving the odds.”</i></p>
-```
-
----
