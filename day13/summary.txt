@@ -1,0 +1,1 @@
+day 13 was all about understandig how to encounter bugs that arise in your code and was also an intro to the debugging tool in pycharm and how to use the breakpoints and jump over and jump into and jump into my code, and how they can be very useful in debugging your code and find what is causing the problem, and understand the flow of your code and how your computer process it.
