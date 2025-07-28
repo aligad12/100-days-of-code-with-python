@@ -129,7 +129,7 @@ def coffee_machine():
     print(f"{'*'*50}\nWelcome to Coffee Machine!\n{'*'*50}")
     machine_is_on = True
     while machine_is_on:
-        prompt = input("What would you like?\n 1.espresso\n2.latte\n3.capuccino\n4.report\nchoose an option: ").lower().strip()
+        prompt = input("What would you like?\n1.espresso\n2.latte\n3.capuccino\n4.report\nchoose an option: ").lower().strip()
         chosen_option = user_input_conversion(prompt)
         drinks = ['espresso','latte','capuccino']
         if chosen_option in drinks:
