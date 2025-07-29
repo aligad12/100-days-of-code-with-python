@@ -124,7 +124,7 @@ Goodbye....shutting down
 ```
 ---
 
-##💡 How the Code Works (Conceptual)
+## 💡 How the Code Works (Conceptual)
 
 - A banner is displayed at the start using ASCII art.
 
