@@ -2,6 +2,7 @@ from question_model import Question
 from data import question_data
 from quiz_brain import Quiz
 import os
+import random
 
 """question_bank = []
 for i in range(len(question_data)):
@@ -18,6 +19,7 @@ for question in question_data:
     new_question = Question(question_text,question_answer)
     question_bank.append(new_question)
 
+random.shuffle(question_bank)
 quiz = Quiz(question_bank)
 inside_quiz = True
 print(quiz.quiz_logo)
@@ -34,6 +36,7 @@ while inside_quiz:
     quiz.print_final_score()
     if quiz.new_quiz():
         print("Welcome to a new quiz!!")
+        random.shuffle(question_bank)
         quiz = Quiz(question_bank)
     
     else:
