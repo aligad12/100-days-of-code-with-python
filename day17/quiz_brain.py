@@ -36,8 +36,10 @@ class Quiz:
     def check_answer(self,answer,question):
         if answer == question.answer:
             self.score+=1
+            print("You got it right!")
             return True
         else:
+            print(f"that's wrong.\nThe correct answer was: {question.answer}")
             return False
 
     def check_end_quiz(self):
