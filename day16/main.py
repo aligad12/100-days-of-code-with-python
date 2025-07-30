@@ -7,8 +7,8 @@ is_machine_on = True
 drinks = ['latte','espresso','cappuccino']
 coffee_machine = CoffeeMaker()
 money_machine = MoneyMachine()
+my_menu = Menu()
 while is_machine_on:
-    my_menu = Menu()
     user_input = input("What would you like? (espresso/latte/cappuccino): ").lower().strip()
     if user_input == 'off':
         is_machine_on = False
