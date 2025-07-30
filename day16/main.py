@@ -9,7 +9,8 @@ coffee_machine = CoffeeMaker()
 money_machine = MoneyMachine()
 my_menu = Menu()
 while is_machine_on:
-    user_input = input("What would you like? (espresso/latte/cappuccino): ").lower().strip()
+    options = my_menu.get_items
+    user_input = input(f"What would you like? ({options}): ").lower().strip()
     if user_input == 'off':
         is_machine_on = False
     elif user_input == "report":
