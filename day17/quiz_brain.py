@@ -19,6 +19,7 @@ class Quiz:
     def next_question(self):
         valid_answer = ['True','False','T','F']
         current_question = self.question_list[self.question_number]
+        self.question_number+=1
         while True:
             answer = input(f"Q.{self.question_number}: {current_question.text} (True/False): ").capitalize().strip()
             if answer == 'T':
@@ -29,11 +30,12 @@ class Quiz:
                 break
             else:
                 print("That was not a valid answer!")
-        return answer
+        return answer,current_question
     
 
-    def check_answer(self,answer):
-        if answer == self.question_list[self.question_number].answer:
+    def check_answer(self,answer,question):
+        if answer == question.answer:
+            self.score+=1
             return True
         else:
             return False

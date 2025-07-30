@@ -24,10 +24,8 @@ print(quiz.quiz_logo)
 print(f"{'*'*50}Welcome to the Quiz App!!{'*'*50}")
 while inside_quiz:
     while not quiz.check_end_quiz():
-        answer = quiz.next_question()
-        if quiz.check_answer(answer):
-            quiz.score +=1
-        quiz.question_number+=1
+        answer,question = quiz.next_question()
+        quiz.check_answer(answer,question)
         os.system('cls' if os.name == 'nt' else 'clear')
         print(quiz.quiz_logo)
         quiz.print_current_score()
