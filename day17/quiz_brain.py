@@ -17,10 +17,14 @@ class Quiz:
 
     
     def next_question(self):
-        valid_answer = ['True','False']
+        valid_answer = ['True','False','T','F']
         current_question = self.question_list[self.question_number]
         while True:
             answer = input(f"Q.{self.question_number}: {current_question.text} (True/False): ").capitalize().strip()
+            if answer == 'T':
+                answer = "True"
+            elif answer == 'F':
+                answer = "False"
             if answer in valid_answer:
                 break
             else:
