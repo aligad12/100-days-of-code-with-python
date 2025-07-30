@@ -14,6 +14,7 @@ while is_machine_on:
         is_machine_on = False
     elif user_input == "report":
         coffee_machine.report()
+        money_machine.report()
     elif user_input in drinks:
         the_drink = my_menu.find_drink(user_input)
         if coffee_machine.is_resource_sufficient(the_drink):
