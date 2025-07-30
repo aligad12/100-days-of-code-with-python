@@ -27,10 +27,9 @@ print(f"{'*'*50}Welcome to the Quiz App!!{'*'*50}")
 while inside_quiz:
     while not quiz.check_end_quiz():
         answer,question = quiz.next_question()
-        os.system('cls' if os.name == 'nt' else 'clear')
-        print(quiz.quiz_logo)
         quiz.check_answer(answer,question)
         quiz.print_current_score()
+        print("\n")
     os.system('cls' if os.name == 'nt' else 'clear')
     print(quiz.quiz_logo)
     quiz.print_final_score()
