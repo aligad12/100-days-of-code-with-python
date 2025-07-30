@@ -1,26 +1,60 @@
-from question_model import question_bank
-
 class Quiz:
-    def __init__(self,questions):
-        self.question_list = question_bank
+    def __init__(self,q_list):
         self.question_number = 0
-         #i think this is going to be the question bank we created before
-#this is a list of questions and there answers here
+        self.question_list = q_list
+        self.score = 0
+        self.quiz_logo = """
+ _____       _        ___               ______          ___  _ _   _____           _ 
+|  _  |     (_)      / _ \              | ___ \        / _ \| (_) |  __ \         | |
+| | | |_   _ _ ____ / /_\ \_ __  _ __   | |_/ /_   _  / /_\ \ |_  | |  \/ __ _  __| |
+| | | | | | | |_  / |  _  | '_ \| '_ \  | ___ \ | | | |  _  | | | | | __ / _` |/ _` |
+\ \/' / |_| | |/ /  | | | | |_) | |_) | | |_/ / |_| | | | | | | | | |_\ \ (_| | (_| |
+ \_/\_\\__,_|_/___| \_| |_/ .__/| .__/  \____/ \__, | \_| |_/_|_|  \____/\__,_|\__,_|
+                          | |   | |             __/ |                                
+                          |_|   |_|            |___/                                 
+"""
 
-    def check_if_answer_is_correct(question,u_answer):
-        if question.text == u_answer:
-            print("Correct answer!")
+
+    
+    def next_question(self):
+        valid_answer = ['True','False']
+        current_question = self.question_list[self.question_number]
+        while True:
+            answer = input(f"Q.{self.question_number}: {current_question.text} (True/False): ").capitalize().strip()
+            if answer in valid_answer:
+                break
+            else:
+                print("That was not a valid answer!")
+        return answer
+    
+
+    def check_answer(self,answer):
+        if answer == self.question_list[self.question_number].answer:
             return True
         else:
-            print("Wrong answer!")
-            return False
-        
-    def check_end_of_quiz(question):
-        if question == question_bank[-1]:
-            return True 
-        else:
             return False
 
-    def take_answer(question):
-        user_answer = input("T or F? ").lower().strip()
-        return user_answer
+    def check_end_quiz(self):
+      if self.question_number == len(self.question_list):
+          return True
+      else:
+          return False
+      
+    def print_final_score(self):
+        q_num = len(self.question_list)
+        if self.check_end_quiz():
+            print(f"The quiz has ended and you scored: {self.score}/{q_num}")
+
+    def print_current_score(self):
+        q_num = len(self.question_list)
+        print(f"your current score is: {self.score}/{q_num}")
+    
+    def new_quiz(self):
+        while True:
+            user_input = input("Do you want to retake the quiz?(y/n)").lower().strip()
+            if user_input =='y':
+                return True
+            elif user_input =='n':
+                return False
+            else:
+                print("That was an invalid input!!")
