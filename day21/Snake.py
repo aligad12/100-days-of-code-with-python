@@ -63,6 +63,7 @@ class Snake:
             food.refresh_food()
             print("nom nom nom")
             self.add_segment()
+            return True
 
 
     def check_collision_with_tail(self):
