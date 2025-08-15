@@ -61,5 +61,11 @@ class Snake:
     def eat_food(self,food):
         if self.head.distance(food) <15:
             food.refresh_food()
+            print("nom nom nom")
             self.add_segment()
 
+
+    def check_collision_with_tail(self):
+        for i in range(1,len(self.segments),1):
+            if self.head.distance(self.segments[i]) < 15:
+                return True
