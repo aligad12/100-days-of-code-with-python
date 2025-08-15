@@ -60,7 +60,7 @@ class Snake:
 
     def eat_food(self,food):
         if self.head.distance(food) <15:
-            food.refresh_food()
+            food.refresh_food(self)
             print("nom nom nom")
             self.add_segment()
             return True
