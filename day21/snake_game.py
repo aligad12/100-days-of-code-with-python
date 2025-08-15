@@ -18,12 +18,23 @@ screen.onkey(key="Down",fun=snake.down)
 screen.onkey(key="Left",fun=snake.left)
 screen.onkey(key="Right",fun=snake.right)
 
+def check_screen_collisions():
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() < -280 or snake.head.ycor() > 280:
+        return True
+
+
 game_is_on = True
 while game_is_on:
     screen.update()
     time.sleep(0.1)
     snake.move()
     snake.eat_food(food)
+    if snake.check_collision_with_tail() == True:
+        print("You lost!")
+        game_is_on = False
+    if check_screen_collisions() == True:
+        print("You lost!")
+        game_is_on = False
 
 
 
