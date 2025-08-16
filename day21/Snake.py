@@ -15,7 +15,7 @@ class Snake:
         self.segments = []
         self.create_snake()
         self.head = self.segments[0]
-
+        
     def create_snake(self):
         for position in STARTING_POSITIONS:
             new_segment = Turtle("square")
@@ -67,6 +67,6 @@ class Snake:
 
 
     def check_collision_with_tail(self):
-        for i in range(1,len(self.segments),1):
-            if self.head.distance(self.segments[i]) < 15:
+        for segment in self.segments[1:]:
+            if self.head.distance(segment) < 10:
                 return True
