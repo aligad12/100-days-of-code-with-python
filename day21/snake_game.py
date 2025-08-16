@@ -1,4 +1,4 @@
-from turtle import Screen
+from turtle import Screen,Turtle
 import time
 from Snake import Snake
 from food import Food
@@ -24,7 +24,16 @@ def check_screen_collisions():
     if snake.head.xcor() > 280 or snake.head.xcor() < -295 or snake.head.ycor() < -280 or snake.head.ycor() > 280:
         print(snake.head.position())
         return True
+def game_over():
+    game_over = Turtle()
+    game_over.color("Red")
+    game_over.write(arg="GAME OVER",align="center",font=("Courier",35,"bold"))
 
+def game_win():
+    if len(snake.segments) == 841:
+        return True
+    else:
+        return False
 
 game_is_on = True
 ScoreBoard.draw_field()
@@ -39,9 +48,15 @@ while game_is_on:
     if snake.check_collision_with_tail() == True:
         print("You lost!")
         game_is_on = False
+        game_over()
     if check_screen_collisions() == True:
         print("You lost!")
         game_is_on = False
+        game_over()
+    if game_win():
+        winner = Turtle()
+        winner.color("gold")
+        winner.write(arg="You Won!",align="center",font=("Courier",35,"bold"))
 
 
 
