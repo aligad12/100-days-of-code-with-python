@@ -13,7 +13,7 @@ screen.tracer(0)
 snake = Snake()
 screen.listen()
 food = Food()
-score_board = ScoreBoard()
+score_board = ScoreBoard(snake)
 
 screen.onkey(key="Up",fun=snake.up)
 screen.onkey(key="Down",fun=snake.down)
@@ -22,18 +22,7 @@ screen.onkey(key="Right",fun=snake.right)
 
 def check_screen_collisions():
     if snake.head.xcor() > 280 or snake.head.xcor() < -295 or snake.head.ycor() < -280 or snake.head.ycor() > 280:
-        print(snake.head.position())
         return True
-def game_over():
-    game_over = Turtle()
-    game_over.color("Red")
-    game_over.write(arg="GAME OVER",align="center",font=("Courier",35,"bold"))
-
-def game_win():
-    if len(snake.segments) == 841:
-        return True
-    else:
-        return False
 
 game_is_on = True
 ScoreBoard.draw_field()
@@ -46,17 +35,13 @@ while game_is_on:
         score_board.update_score()
         game_speed-=0.001
     if snake.check_collision_with_tail() == True:
-        print("You lost!")
         game_is_on = False
-        game_over()
+        score_board.game_over()
     if check_screen_collisions() == True:
-        print("You lost!")
         game_is_on = False
-        game_over()
-    if game_win():
-        winner = Turtle()
-        winner.color("gold")
-        winner.write(arg="You Won!",align="center",font=("Courier",35,"bold"))
+        score_board.game_over()
+    if score_board.game_win(snake):
+        break
 
 
 
