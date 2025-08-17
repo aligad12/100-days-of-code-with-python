@@ -6,13 +6,14 @@ class ScoreBoard(Turtle):
         self.color("white")
         self.penup()
         self.hideturtle()
-        self.score= 0
+        self.score_left= 0
+        self.score_right=0
         self.display_score() #this line to display the initial score
     
     def display_score(self):
         self.clear()
         self.goto(0,280)
-        self.write(arg=f"Score = {self.score} ",align="center",font=("Courier",25,"normal"))
+        self.write(arg=f"{self.score_left} | {self.score_right}",align="center",font=("Courier",25,"normal"))
 
 
     def draw_boarder():
@@ -32,3 +33,12 @@ class ScoreBoard(Turtle):
         new.pendown()
         new.setheading(0)
         new.forward(800)
+
+    def update_score_left(self):
+        self.score_left+=1
+        self.display_score()
+
+    def update_score_right(self):
+        self.score_right+=1
+        self.display_score()
+
