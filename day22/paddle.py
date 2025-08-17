@@ -1,7 +1,7 @@
 from turtle import Turtle
 
 class Paddle(Turtle):
-    def __init__(self,screen):
+    def __init__(self,screen,position):
         super().__init__()
         self.shape("square")
         self.penup()
@@ -10,17 +10,11 @@ class Paddle(Turtle):
         self.setheading(90)
         self.shapesize(stretch_len=5,stretch_wid=1)
         self.color("white")
+        self.goto(position,0)
         self.moving_up = False
         self.moving_down = False
         self.screen = screen
 
-
-    def move_paddle(self,pos_x):
-        if pos_x < 390 and pos_x > -390:
-            self.goto(pos_x,0)
-        else:
-            print("that was a not allowed value!")
-            raise OverflowError
         
     def detect_collision(self,ball):
         pass
