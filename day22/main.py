@@ -43,12 +43,12 @@ while game_is_on:
         ball.bounce_x()     
     
     elif ball.xcor() > 350:
-        ball.goto(0,0)
+        ball.reset_position()
         ball.increase_ball_speed()
         score.update_score_left()
 
     elif ball.xcor() < -350:
-        ball.goto(0,0)
+        ball.reset_position()
         ball.increase_ball_speed()
         score.update_score_right()
 
