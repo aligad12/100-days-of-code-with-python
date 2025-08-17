@@ -11,10 +11,8 @@ screen.setup(width=800,height=650)
 screen.title("The Famous Pong Game")
 screen.listen()
 ball = Ball()
-paddle_1 = Paddle(screen)
-paddle_1.move_paddle(-350)
-paddle_2 = Paddle(screen)
-paddle_2.move_paddle(350)
+paddle_1 = Paddle(screen,-350)
+paddle_2 = Paddle(screen,350)
 score = ScoreBoard()
 score.display_score()
 ScoreBoard.draw_boarder()
@@ -31,9 +29,28 @@ screen.onkeyrelease(key="s",fun=paddle_2.down_released)
 
 while game_is_on:
     screen.update()
-    time.sleep(0.05)
+    time.sleep(0.03)
     paddle_1.move_while_pressed()
     paddle_2.move_while_pressed()
+    ball.move()
+    if ball.ycor() > 250 or ball.ycor() < -270:
+        ball.bounce_y()
+    
+    elif ball.xcor() > 330 and paddle_2.ycor() - 50 < ball.ycor() < paddle_2.ycor() + 50:
+        ball.bounce_x()
+
+    elif ball.xcor() < -330 and paddle_1.ycor() - 50 < ball.ycor() < paddle_1.ycor() + 50:
+        ball.bounce_x()     
+    
+    elif ball.xcor() > 350:
+        ball.goto(0,0)
+        score.update_score_left()
+
+    elif ball.xcor() < -350:
+        ball.goto(0,0)
+        score.update_score_right()
+
+       
 
 
 
