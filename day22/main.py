@@ -29,7 +29,7 @@ screen.onkeyrelease(key="s",fun=paddle_2.down_released)
 
 while game_is_on:
     screen.update()
-    time.sleep(0.03)
+    time.sleep(0.025)
     paddle_1.move_while_pressed()
     paddle_2.move_while_pressed()
     ball.move()
@@ -44,10 +44,12 @@ while game_is_on:
     
     elif ball.xcor() > 350:
         ball.goto(0,0)
+        ball.increase_ball_speed()
         score.update_score_left()
 
     elif ball.xcor() < -350:
         ball.goto(0,0)
+        ball.increase_ball_speed()
         score.update_score_right()
 
        
