@@ -6,6 +6,7 @@ class Ball(Turtle):
         self.penup()
         self.color("white")
         self.shape("circle")
+        self.ball_speed = 0.01
         self.x_move = 10
         self.y_move = 10
 
@@ -21,4 +22,7 @@ class Ball(Turtle):
 
     def bounce_x(self):
         self.x_move *= -1
-        
+
+    def increase_ball_speed(self):
+        self.ball_speed+=0.005
+        self.speed(self.ball_speed)
